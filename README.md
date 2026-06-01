@@ -1,30 +1,107 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 💒 Vivaah360 API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A comprehensive wedding planning platform API built with **NestJS**, **PostgreSQL**, and **Prisma**.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+![NestJS](https://img.shields.io/badge/NestJS-10.0-red?style=flat-square&logo=nestjs)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.1-blue?style=flat-square&logo=typescript)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12+-blue?style=flat-square&logo=postgresql)
+![Prisma](https://img.shields.io/badge/Prisma-6.19-2d3748?style=flat-square&logo=prisma)
 
-## Description
+## 🚀 Quick Start
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Prerequisites
+- Node.js v20.3+
+- PostgreSQL 12+
+- npm v10+
+
+### Setup (3 steps)
+
+1. **Install dependencies**
+```bash
+npm install
+```
+
+2. **Configure environment**
+```bash
+cp .env.example .env
+# Edit .env with your PostgreSQL credentials
+```
+
+3. **Setup database & run**
+```bash
+npx prisma migrate dev --name init
+npm run start:dev
+```
+
+✅ Server: `http://localhost:3000`  
+📖 API docs: `http://localhost:3000/api-docs`
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── auth/              # Authentication module
+├── users/             # Users module
+├── prisma/            # Database service
+├── common/            # Shared utilities
+├── config/            # Configuration
+└── app.module.ts      # Root module
+```
+
+---
+
+## 📚 Documentation
+
+| File | Purpose |
+|------|---------|
+| **HOW_IT_WORKS.md** | System architecture, API flow, database schema |
+| **DEVELOPMENT.md** | Setup, commands, development workflow |
+| **.env.example** | Environment variables template |
+
+---
+
+## 🏃 Common Commands
+
+```bash
+npm run start:dev        # Development with hot-reload
+npm run start:debug      # Debug mode
+npm run build            # Production build
+npm run lint             # Fix linting
+npm run format           # Format code
+npm test                 # Run tests
+
+# Database
+npx prisma studio       # Open database UI
+npx prisma migrate dev --name name  # Create migration
+```
+
+See **DEVELOPMENT.md** for complete command reference.
+
+---
+
+## 🔐 Authentication
+
+- JWT-based authentication
+- Passport.js strategies
+- Refresh token support
+- Bearer token in Swagger
+
+Access API docs with token: `http://localhost:3000/api-docs`
+
+---
+
+## 📋 Current Status
+
+- ✅ Project structure setup
+- ✅ Auth & Users modules created
+- ✅ Prisma database configured
+- ✅ Swagger API documentation
+- ✅ JWT authentication ready
+
+**Branch**: feature/yash | **Repo**: https://github.com/yash10ch/vivaah360
+
 
 ## Project setup
 

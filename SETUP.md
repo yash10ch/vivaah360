@@ -153,7 +153,7 @@ DATABASE_URL="postgresql://user:password@localhost:5432/vivaah360"
 
 # JWT Configuration
 JWT_SECRET="your_jwt_secret_key_here"
-JWT_EXPIRATION="24h"
+JWT_EXPIRES_IN="15m"
 
 # API Configuration
 NODE_ENV="development"
@@ -161,7 +161,12 @@ PORT=3000
 
 # Refresh Token
 REFRESH_TOKEN_SECRET="your_refresh_token_secret"
-REFRESH_TOKEN_EXPIRATION="7d"
+# REFRESH_TOKEN_EXPIRATION="30d"  # optional; refresh token expiry is currently fixed at 30 days in implementation
+
+# Google OAuth (required for Google social login)
+# GOOGLE_CLIENT_ID="your-google-client-id"
+# GOOGLE_CLIENT_SECRET="your-google-client-secret"
+# GOOGLE_CALLBACK_URL="http://localhost:3000/auth/google/callback"
 ```
 
 **Important**: Replace values with your actual configuration.
@@ -393,6 +398,14 @@ Configuration management.
 6. Token expires → Client uses Refresh Token to get new JWT
 ```
 
+### Token Refresh & Logout
+
+- `POST /auth/refresh` accepts JSON: `{ "refreshToken": "<refresh_token>" }`
+- The server validates the refresh token from `user_sessions`
+- If valid, it returns a new access token
+- `POST /auth/logout` accepts JSON: `{ "refreshToken": "<refresh_token>" }`
+- The server deletes the refresh token session and logs the user out
+
 ### Required Dependencies
 - `@nestjs/jwt` - JWT generation/validation
 - `@nestjs/passport` - Passport integration
@@ -540,11 +553,11 @@ DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE_NAME
 
 # JWT
 JWT_SECRET=your_secret_key_min_32_characters
-JWT_EXPIRATION=24h
+JWT_EXPIRES_IN=15m
 
 # Refresh Token
 REFRESH_TOKEN_SECRET=your_refresh_secret_key
-REFRESH_TOKEN_EXPIRATION=7d
+# REFRESH_TOKEN_EXPIRATION=7d  # optional; current refresh token expiry is fixed at 30 days in implementation
 
 # Server
 PORT=3000

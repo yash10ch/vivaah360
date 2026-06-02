@@ -500,15 +500,20 @@ DATABASE_URL="postgresql://username:password@localhost:5432/vivaah360"
 
 # JWT Authentication
 JWT_SECRET="your_secret_key_min_32_chars"
-JWT_EXPIRATION="24h"
+JWT_EXPIRES_IN="15m"
 
 # Refresh Token
 REFRESH_TOKEN_SECRET="your_refresh_secret_min_32_chars"
-REFRESH_TOKEN_EXPIRATION="7d"
+# REFRESH_TOKEN_EXPIRATION="30d"  # optional; current refresh token expiry is fixed at 30 days in implementation
 
 # Server
 PORT=3000
 NODE_ENV="development"
+
+# Google OAuth (optional)
+# GOOGLE_CLIENT_ID="your-google-client-id"
+# GOOGLE_CLIENT_SECRET="your-google-client-secret"
+# GOOGLE_CALLBACK_URL="http://localhost:3000/auth/google/callback"
 
 # Optional
 CORS_ORIGINS="http://localhost:3000,http://localhost:3001"

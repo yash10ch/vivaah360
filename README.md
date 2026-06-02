@@ -85,8 +85,26 @@ See **DEVELOPMENT.md** for complete command reference.
 
 - JWT-based authentication
 - Passport.js strategies
-- Refresh token support
+- Google OAuth social login
+- Refresh token support with stored sessions
 - Bearer token in Swagger
+
+### Auth endpoints
+
+- `GET /auth/google` - start Google OAuth login
+- `GET /auth/google/callback` - Google OAuth redirect callback
+- `GET /auth/me` - authenticated user profile
+- `POST /auth/refresh` - refresh access token using `{ refreshToken }`
+- `POST /auth/logout` - revoke refresh token using `{ refreshToken }`
+
+### Required environment variables
+
+- `JWT_SECRET`
+- `JWT_EXPIRES_IN`
+- `REFRESH_TOKEN_SECRET`
+- `GOOGLE_CLIENT_ID`
+- `GOOGLE_CLIENT_SECRET`
+- `GOOGLE_CALLBACK_URL`
 
 Access API docs with token: `http://localhost:3000/api-docs`
 

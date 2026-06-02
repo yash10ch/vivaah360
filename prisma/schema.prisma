@@ -22,7 +22,7 @@ model users {
   first_name    String?         @db.VarChar(100)
   last_name     String?         @db.VarChar(100)
   profile_image String?
-  role          String          @default("COUPLE") @db.VarChar(20)
+  role          String          @default("USER") @db.VarChar(20)
   provider      String?         @db.VarChar(50)
   provider_id   String?         @db.VarChar(255)
   is_active     Boolean?        @default(true)

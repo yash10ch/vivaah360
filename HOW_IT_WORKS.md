@@ -141,6 +141,26 @@ Client                          Server
 
 ---
 
+### 4. Logout Flow
+
+```
+Client                          Server
+  │                               │
+  ├─ POST /auth/logout ────────> │
+  │  (refresh_token)              │
+  │                               │
+  │                     [Delete refresh session]
+  │                               │
+  │ <──── 200 OK + success message ─┤
+  │                               │
+  └─ Client clears local JWT + refresh token
+```
+
+- Logout removes the refresh token from `user_sessions`
+- A deleted refresh token can no longer be used to request a new access token
+
+---
+
 ## Database Schema
 
 ### Users Table
@@ -304,15 +324,16 @@ DATABASE_URL="postgresql://user:pass@localhost:5432/vivaah360"
 
 # JWT
 JWT_SECRET="min_32_chars_secret_key_here"
-JWT_EXPIRATION="24h"
+JWT_EXPIRES_IN="15m"
 
 # Refresh Token
 REFRESH_TOKEN_SECRET="min_32_chars_refresh_secret"
-REFRESH_TOKEN_EXPIRATION="7d"
+# REFRESH_TOKEN_EXPIRATION="30d"  # optional; current refresh token expiry is fixed at 30 days in implementation
 
-# Server
-PORT=3000
-NODE_ENV="development"
+# Google OAuth (required for Google social login)
+# GOOGLE_CLIENT_ID="your-google-client-id"
+# GOOGLE_CLIENT_SECRET="your-google-client-secret"
+# GOOGLE_CALLBACK_URL="http://localhost:3000/auth/google/callback"
 ```
 
 ---
